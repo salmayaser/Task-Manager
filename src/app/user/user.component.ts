@@ -1,4 +1,4 @@
-import { Component, computed, input, output } from '@angular/core';
+import { Component, computed, Input, input, output } from '@angular/core';
 import { User } from '../shared/interfaces/user.model';
 
 @Component({
@@ -14,6 +14,7 @@ export class UserComponent {
 
   //signal inputs
   user = input.required<User>();
+  isActive = input(false);
 
   imagePath = computed(() => `assets/users/${this.user().avatar}`);
   handleUserClicked = output<string>();
