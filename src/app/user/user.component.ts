@@ -1,12 +1,5 @@
-import {
-  Component,
-  computed,
-  EventEmitter,
-  input,
-  Output,
-  output,
-} from '@angular/core';
-import { User } from '../shared/interfaces/user';
+import { Component, computed, input, output } from '@angular/core';
+import { User } from '../shared/interfaces/user.model';
 
 @Component({
   selector: 'app-user',

@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Task } from '../shared/interfaces/task';
+import { Task } from '../shared/interfaces/task.model';
 import { DatePipe } from '@angular/common';
 
 @Component({

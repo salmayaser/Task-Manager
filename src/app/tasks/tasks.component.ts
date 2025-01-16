@@ -1,7 +1,7 @@
 import { Component, computed, input, OnInit } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
 import { dummyTasks } from './dummy-tasks';
-import { Task } from '../shared/interfaces/task';
+import { Task } from '../shared/interfaces/task.model';
 
 @Component({
   selector: 'app-tasks',
