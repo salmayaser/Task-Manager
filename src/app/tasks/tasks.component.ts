@@ -1,5 +1,7 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input, OnInit } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
+import { dummyTasks } from './dummy-tasks';
+import { Task } from '../shared/interfaces/task';
 
 @Component({
   selector: 'app-tasks',
@@ -10,4 +12,9 @@ import { TaskComponent } from '../task/task.component';
 })
 export class TasksComponent {
   name = input.required<string>();
+  id = input.required<string>();
+  tasks = dummyTasks;
+  userTasks = computed(() =>
+    this.tasks.filter((task) => task.userId == this.id())
+  );
 }

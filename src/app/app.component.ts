@@ -22,12 +22,12 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'app';
   users = DUMMY_USERS;
-  selectedUserName = signal(this.users[0].name);
+  selectedUser = signal(this.users[0]);
 
   onUserClicked(userId: string) {
     let selectedUser = this.users.find((user) => {
       return user.id == userId;
     });
-    this.selectedUserName.set(selectedUser!.name);
+    this.selectedUser.set(selectedUser!);
   }
 }
