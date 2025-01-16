@@ -1,0 +1,16 @@
+<app-header></app-header>
+<main>
+  <ul id="users">
+    @for(user of users ; track user.id){
+    <li>
+      <app-user
+        [user]="user"
+        (handleUserClicked)="onUserClicked($event)"
+      ></app-user>
+    </li>
+
+    }
+  </ul>
+
+  <app-tasks [name]="selectedUserName()"></app-tasks>
+</main>
