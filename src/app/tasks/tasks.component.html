@@ -20,5 +20,8 @@
 </section>
 
 @if (showAddNewTask) {
-<app-add-new-task (handleCancelClicked)="closeDialog()"></app-add-new-task>
+<app-add-new-task
+  (handleCancelClicked)="closeDialog()"
+  (handleCreateClicked)="addNewTask($event)"
+></app-add-new-task>
 }
