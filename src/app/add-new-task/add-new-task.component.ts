@@ -1,6 +1,6 @@
-import { Component, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { EnteredTask, Task } from '../shared/interfaces/task.model';
+import { TasksService } from '../tasks/tasks.service';
 
 @Component({
   selector: 'app-add-new-task',
@@ -10,8 +10,9 @@ import { EnteredTask, Task } from '../shared/interfaces/task.model';
   styleUrl: './add-new-task.component.css',
 })
 export class AddNewTaskComponent {
+  private tasksService = inject(TasksService);
   handleCancelClicked = output();
-  handleCreateClicked = output<EnteredTask>();
+  userId = input.required<string>();
   title = '';
   summary = '';
   dueDate = '';
@@ -21,10 +22,13 @@ export class AddNewTaskComponent {
   }
   onCreate() {
     this.onCancel();
-    this.handleCreateClicked.emit({
-      title: this.title,
-      summary: this.summary,
-      dueDate: this.dueDate,
-    });
+    this.tasksService.addNewTask(
+      {
+        title: this.title,
+        summary: this.summary,
+        dueDate: this.dueDate,
+      },
+      this.userId()
+    );
   }
 }

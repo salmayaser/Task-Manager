@@ -21,7 +21,7 @@
 
 @if (showAddNewTask) {
 <app-add-new-task
+  [userId]="id()"
   (handleCancelClicked)="closeDialog()"
-  (handleCreateClicked)="addNewTask($event)"
 ></app-add-new-task>
 }

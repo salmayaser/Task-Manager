@@ -1,8 +1,7 @@
-import { Component, input, OnChanges, output } from '@angular/core';
+import { Component, inject, input, OnChanges, output } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
-import { dummyTasks } from './dummy-tasks';
-import { EnteredTask, Task } from '../shared/interfaces/task.model';
 import { AddNewTaskComponent } from '../add-new-task/add-new-task.component';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -12,13 +11,13 @@ import { AddNewTaskComponent } from '../add-new-task/add-new-task.component';
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
+  tasksService = inject(TasksService);
   name = input.required<string>();
   id = input.required<string>();
-  tasks = dummyTasks;
   showAddNewTask = false;
 
   handleCompleteClicked(taskId: string) {
-    this.tasks = this.tasks.filter((task) => task.id !== taskId);
+    this.tasksService.deleteTask(taskId);
   }
   onAddNewTaskClicked() {
     this.showAddNewTask = true;
@@ -26,15 +25,8 @@ export class TasksComponent {
   closeDialog() {
     this.showAddNewTask = false;
   }
-  addNewTask(task: EnteredTask) {
-    this.tasks.push({
-      ...task,
-      id: `t${this.tasks.length + 1}`,
-      userId: this.id(),
-    });
-  }
 
   get userTasks() {
-    return this.tasks.filter((task) => task.userId == this.id());
+    return this.tasksService.getUserTasks(this.id());
   }
 }
