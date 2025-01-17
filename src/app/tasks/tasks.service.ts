@@ -22,6 +22,7 @@ export class TasksService {
 
   deleteTask(taskId: string) {
     this.tasks = this.tasks.filter((task) => task.id !== taskId);
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 
   get getTasks() {
