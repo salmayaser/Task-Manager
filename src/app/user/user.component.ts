@@ -1,11 +1,13 @@
 import { Component, computed, Input, input, output } from '@angular/core';
 import { User } from '../shared/interfaces/user.model';
+import { CardComponent } from '../shared/components/card/card.component';
 
 @Component({
   selector: 'app-user',
   standalone: true,
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
+  imports: [CardComponent],
 })
 export class UserComponent {
   // @Input({ required: true }) avatar!: string;
