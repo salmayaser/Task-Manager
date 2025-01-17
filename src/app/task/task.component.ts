@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Task } from '../shared/interfaces/task.model';
 import { DatePipe } from '@angular/common';
 
@@ -11,4 +11,9 @@ import { DatePipe } from '@angular/common';
 })
 export class TaskComponent {
   task = input<Task>();
+  handleCompleteClicked = output<string>();
+
+  onCompleteClicked() {
+    this.handleCompleteClicked.emit(this.task()!.id);
+  }
 }

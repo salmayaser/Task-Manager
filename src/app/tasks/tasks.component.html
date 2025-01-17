@@ -2,16 +2,23 @@
   <header>
     <h2>{{ name() }}'s Tasks</h2>
     <menu>
-      <button>Add new tasks</button>
+      <button (click)="onAddNewTaskClicked()">Add new tasks</button>
     </menu>
   </header>
 
   <ul>
-    @for (task of userTasks(); track task.id) {
+    @for (task of userTasks; track task.id) {
     <li>
-      <app-task [task]="task"></app-task>
+      <app-task
+        [task]="task"
+        (handleCompleteClicked)="handleCompleteClicked($event)"
+      ></app-task>
     </li>
 
     }
   </ul>
 </section>
+
+@if (showAddNewTask) {
+<app-add-new-task (handleCancelClicked)="closeDialog()"></app-add-new-task>
+}
