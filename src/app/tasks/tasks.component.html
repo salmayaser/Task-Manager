@@ -9,10 +9,7 @@
   <ul>
     @for (task of userTasks; track task.id) {
     <li>
-      <app-task
-        [task]="task"
-        (handleCompleteClicked)="handleCompleteClicked($event)"
-      ></app-task>
+      <app-task [task]="task"></app-task>
     </li>
 
     }

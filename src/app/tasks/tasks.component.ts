@@ -1,4 +1,4 @@
-import { Component, inject, input, OnChanges, output } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
 import { AddNewTaskComponent } from '../add-new-task/add-new-task.component';
 import { TasksService } from './tasks.service';
@@ -16,9 +16,6 @@ export class TasksComponent {
   id = input.required<string>();
   showAddNewTask = false;
 
-  handleCompleteClicked(taskId: string) {
-    this.tasksService.deleteTask(taskId);
-  }
   onAddNewTaskClicked() {
     this.showAddNewTask = true;
   }
